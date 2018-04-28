@@ -4,21 +4,21 @@
 ## Synopsys
 
 
-|     SETTING     |  TYPE   | REQUIRED |   DEFAULT VALUE    |
-|-----------------|---------|----------|--------------------|
-| host            | string  | false    | "localhost"        |
-| port            | int     | false    |               8125 |
-| protocol        | string  | false    | "udp"              |
-| sender          | string  | false    | ""                 |
-| count           | hash    | false    | {}                 |
-| decrement       | array   | false    | []                 |
-| gauge           | hash    | false    | {}                 |
-| increment       | array   | false    | []                 |
-| namespace       | string  | false    | "bitfan"           |
-| sample_rate     | float32 | false    |                1.0 |
-| set             | hash    | false    | {}                 |
-| timing          | hash    | false    | {}                 |
-| validate_regexp | string  | false    | "[^a-zA-Z0-9_:#-]" |
+|     SETTING     |  TYPE   | REQUIRED |    DEFAULT VALUE    |
+|-----------------|---------|----------|---------------------|
+| host            | string  | false    | "localhost"         |
+| port            | int     | false    |                8125 |
+| protocol        | string  | false    | "udp"               |
+| sender          | string  | false    | ""                  |
+| count           | hash    | false    | {}                  |
+| decrement       | array   | false    | []                  |
+| gauge           | hash    | false    | {}                  |
+| increment       | array   | false    | []                  |
+| namespace       | string  | false    | "bitfan"            |
+| sample_rate     | float32 | false    |                 1.0 |
+| set             | hash    | false    | {}                  |
+| timing          | hash    | false    | {}                  |
+| validate_regexp | string  | false    | "[^a-zA-Z0-9_:#.-]" |
 
 
 ## Details
@@ -97,7 +97,7 @@ A timing metric. metric_name => duration as hash
 
 ### validate_regexp
 * Value type is string
-* Default value is `"[^a-zA-Z0-9_:#-]"`
+* Default value is `"[^a-zA-Z0-9_:#.-]"`
 
 Defines the characters that allowed in metric names. Any character is not in this list, is replaced by with "_" (underscore)
 
@@ -119,6 +119,6 @@ statsd{
 	sample_rate => 1.0
 	set => {}
 	timing => {}
-	validate_regexp => "[^a-zA-Z0-9_:#-]"
+	validate_regexp => "[^a-zA-Z0-9_:#.-]"
 }
 ```

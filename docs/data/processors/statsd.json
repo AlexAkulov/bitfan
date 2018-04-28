@@ -129,7 +129,7 @@
       },
       {
         "Alias": "validate_regexp",
-        "DefaultValue": "\"[^a-zA-Z0-9_:#-]\"",
+        "DefaultValue": "\"[^a-zA-Z0-9_:#.-]\"",
         "Doc": "Defines the characters that allowed in metric names. Any character is not in this list, is replaced by with \"_\" (underscore)",
         "ExampleLS": "",
         "Name": "ValidateRegexp",

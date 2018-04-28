@@ -139,7 +139,7 @@ func (p *processor) Doc() *doc.Processor {
         Doc:            "Defines the characters that allowed in metric names. Any character is not in this list, is replaced by with \"_\" (underscore)",
         Required:       false,
         Type:           "string",
-        DefaultValue:   "\"[^a-zA-Z0-9_:#-]\"",
+        DefaultValue:   "\"[^a-zA-Z0-9_:#.-]\"",
         PossibleValues: []string{},
         ExampleLS:      "",
       },

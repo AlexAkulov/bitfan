@@ -64,7 +64,7 @@ type options struct {
 	Timing map[string]interface{} `mapstructure:"timing"`
 
 	// Defines the characters that allowed in metric names. Any character is not in this list, is replaced by with "_" (underscore)
-	// @Default "[^a-zA-Z0-9_:#-]"
+	// @Default "[^a-zA-Z0-9_:#.-]"
 	ValidateRegexp string `mapstructure:"validate_regexp"`
 }
 
@@ -76,7 +76,7 @@ func (p *processor) Configure(ctx processors.ProcessorContext, conf map[string]i
 		Sender:     fqdn.Get(),
 		NameSpace:  "bitfan",
 		SampleRate: 1.0,
-		ValidateRegexp: "[^a-zA-Z0-9_:#-]",
+		ValidateRegexp: "[^a-zA-Z0-9_:#.-]",
 	}
 	p.opt = &defaults
 	if err := p.ConfigureAndValidate(ctx, conf, p.opt); err != nil {
@@ -139,7 +139,7 @@ func (p *processor) dynamicKey(key string, e processors.IPacket) string {
 	k, s := key, p.opt.Sender
 	processors.Dynamic(&k, e.Fields())
 	processors.Dynamic(&s, e.Fields())
-	return fmt.Sprintf("%s.%s", p.metricRe.ReplaceAllString(s, "_"), k)
+	return fmt.Sprintf("%s.%s", p.metricRe.ReplaceAllString(s, "_"), p.metricRe.ReplaceAllString(k, "_"))
 }
 
 func (p *processor) Start(e processors.IPacket) error {

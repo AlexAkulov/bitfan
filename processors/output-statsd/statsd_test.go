@@ -28,6 +28,8 @@ func TestMetricBuild(t *testing.T) {
 	assert.Equal(t, "400.response.total.400.100", p.dynamicKey("response.total.%{message}.%{int}", testutils.NewPacketOld("400", map[string]interface{}{"int": 100})))
 	assert.Equal(t, "message.message.message", p.dynamicKey("%{message}.%{message}", testutils.NewPacketOld("message", nil)))
 
+	assert.Equal(t, "Bad_Metric-N_me.Bad_Metric-N_me", p.dynamicKey("%{message}", testutils.NewPacketOld("Bad Metric-N@me", nil)))
+
 	v, err := p.dynamicValue("%{float}", testutils.NewPacketOld("message", map[string]interface{}{"float": 12.123}))
 	assert.NoError(t, err)
 	assert.Equal(t, 12.123, v)

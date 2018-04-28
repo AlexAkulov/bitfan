@@ -1,4 +1,5 @@
 {
+  "Behavior": "",
   "Doc": "",
   "DocShort": "",
   "ImportPath": "github.com/vjeantet/bitfan/processors/output-statsd",
@@ -8,7 +9,7 @@
     "Options": [
       {
         "Alias": "host",
-        "DefaultValue": null,
+        "DefaultValue": "\"localhost\"",
         "Doc": "The address of the statsd server.",
         "ExampleLS": "",
         "Name": "Host",
@@ -18,7 +19,7 @@
       },
       {
         "Alias": "port",
-        "DefaultValue": null,
+        "DefaultValue": "8125",
         "Doc": "The port to connect to on your statsd server.",
         "ExampleLS": "",
         "Name": "Port",
@@ -28,7 +29,7 @@
       },
       {
         "Alias": "protocol",
-        "DefaultValue": null,
+        "DefaultValue": "\"udp\"",
         "Doc": "",
         "ExampleLS": "",
         "Name": "Protocol",
@@ -88,7 +89,7 @@
       },
       {
         "Alias": "namespace",
-        "DefaultValue": null,
+        "DefaultValue": "\"bitfan\"",
         "Doc": "The statsd namespace to use for this metric.",
         "ExampleLS": "",
         "Name": "NameSpace",
@@ -98,7 +99,7 @@
       },
       {
         "Alias": "sample_rate",
-        "DefaultValue": null,
+        "DefaultValue": "1.0",
         "Doc": "The sample rate for the metric.",
         "ExampleLS": "",
         "Name": "SampleRate",
@@ -125,6 +126,16 @@
         "PossibleValues": null,
         "Required": false,
         "Type": "hash"
+      },
+      {
+        "Alias": "validate_regexp",
+        "DefaultValue": "\"[^a-zA-Z0-9_:#-]\"",
+        "Doc": "Defines the characters that allowed in metric names. Any character is not in this list, is replaced by with \"_\" (underscore)",
+        "ExampleLS": "",
+        "Name": "ValidateRegexp",
+        "PossibleValues": null,
+        "Required": false,
+        "Type": "string"
       }
     ]
   },
